@@ -4,6 +4,11 @@ import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const App = () => {
+
+
+  const firstSize =`M 80 100 Q 555 0 1480 80`
+  const finalSize =`M 80 100 Q 555 0 1480 80`
+
   const pinRef = useRef(null);
   const textRef = useRef(null);
   const boxRef = useRef(null);
@@ -86,7 +91,9 @@ const App = () => {
       </div>
 
       <div className="min-h-screen bg-sky-500">
-        <h1 className="text-8xl">hello</h1>
+        <svg className="" width="1690" height="200">
+          <path d="M 80 100 Q 700 200 1400 100" stroke="white" fill="transparent"/>
+          </svg>
       </div>
 
       <div className="min-h-screen bg-amber-600">
