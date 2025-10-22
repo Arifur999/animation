@@ -4,18 +4,18 @@ import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const App = () => {
-  // 🟢 Default straight line path
   const defaultPath = `M 80 100 Q 700 100 1400 100`;
 
   const pinRef = useRef(null);
   const textRef = useRef(null);
   const boxRef = useRef(null);
   const pathRef = useRef(null);
+  const hoverRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Box animation
+    //  Box animation
     gsap.to(boxRef.current, {
       x: 1400,
       duration: 2,
@@ -25,7 +25,7 @@ const App = () => {
       yoyo: true,
     });
 
-    // ScrollTrigger section
+    //  ScrollTrigger horizontal scroll
     const createScrollAnimation = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
@@ -59,7 +59,7 @@ const App = () => {
     createScrollAnimation();
     window.addEventListener("resize", createScrollAnimation);
 
-    // 🟢 Mouse-follow curve effect
+    //  SVG mouse-follow curve
     const svg = document.querySelector("svg");
     const path = pathRef.current;
 
@@ -68,7 +68,6 @@ const App = () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Control point follows cursor position
       const newPath = `M 80 100 Q ${x} ${y} 1400 100`;
 
       gsap.to(path, {
@@ -79,11 +78,9 @@ const App = () => {
     };
 
     const handleMouseLeave = () => {
-      // Return to straight line
       gsap.to(path, {
         attr: { d: defaultPath },
         duration: 1.2,
-        // ease:"bounce.out"
         ease: "elastic.out(1, 0.2)",
       });
     };
@@ -91,17 +88,63 @@ const App = () => {
     svg.addEventListener("mousemove", handleMouseMove);
     svg.addEventListener("mouseleave", handleMouseLeave);
 
-    // Cleanup
+    //  Hover Section Cursor Follow
+    const hoverDiv = hoverRef.current;
+    const cursor = hoverDiv.querySelector("#cursor");
+
+    // Make sure circle center aligns with mouse
+    cursor.style.position = "fixed";
+    cursor.style.left = "0";
+    cursor.style.top = "0";
+    cursor.style.transform = "translate(-50%, -50%)"; // ✅ centers it exactly under cursor
+    cursor.style.pointerEvents = "none";
+
+    const move = (e) => {
+      gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.1,
+        ease: "none",
+      });
+    };
+
+    const enter = () => {
+      gsap.to(cursor, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    };
+
+    const leave = () => {
+      gsap.to(cursor, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    };
+
+    hoverDiv.addEventListener("mousemove", move);
+    hoverDiv.addEventListener("mouseenter", enter);
+    hoverDiv.addEventListener("mouseleave", leave);
+
+    // 🧹 Cleanup
     return () => {
       window.removeEventListener("resize", createScrollAnimation);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       svg.removeEventListener("mousemove", handleMouseMove);
       svg.removeEventListener("mouseleave", handleMouseLeave);
+      hoverDiv.removeEventListener("mousemove", move);
+      hoverDiv.removeEventListener("mouseenter", enter);
+      hoverDiv.removeEventListener("mouseleave", leave);
     };
   }, []);
 
   return (
     <div>
+      {/* First Section */}
       <div className="min-h-screen bg-amber-600 flex items-center">
         <div ref={boxRef} className="p-40 bg-blue-950 w-40"></div>
       </div>
@@ -119,7 +162,7 @@ const App = () => {
         </h1>
       </div>
 
-      {/* 🟢 SVG Mouse-Follow Section */}
+      {/*  SVG Mouse-Follow Section */}
       <div className="min-h-screen bg-sky-500 flex justify-center items-center">
         <svg width="1500" height="200" className="cursor-pointer">
           <path
@@ -132,8 +175,16 @@ const App = () => {
         </svg>
       </div>
 
-      <div className="min-h-screen bg-amber-600">
-        <h1 className="text-8xl text-center">hello</h1>
+      {/*  Hover Section with Cursor Glow */}
+      <div
+        ref={hoverRef}
+        className="min-h-screen bg-amber-600 flex justify-center items-center relative overflow-hidden"
+      >
+        <div
+          id="cursor"
+          className="absolute w-6 h-6 bg-white/20 rounded-full opacity-0 scale-0"
+        ></div>
+        <h1 className="text-8xl text-center text-white z-10">hello</h1>
       </div>
     </div>
   );
