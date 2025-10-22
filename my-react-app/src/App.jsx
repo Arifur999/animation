@@ -184,7 +184,17 @@ const App = () => {
           id="cursor"
           className="absolute w-6 h-6 bg-white/20 rounded-full opacity-0 scale-0"
         ></div>
-        <h1 className="text-8xl text-center text-white z-10">hello</h1>
+        <h1 className="text-8xl text-center text-white z-10">Mouse hover </h1>
+      </div>
+      <div
+        
+        className="min-h-screen bg-sky-500 flex justify-center items-center relative overflow-hidden"
+      >
+        <div
+          
+          className="absolute w-6 h-6 bg-white/20 rounded-full opacity-0 scale-0"
+        ></div>
+        <h1 className="text-8xl text-center text-white z-10">coming soon......</h1>
       </div>
     </div>
   );
