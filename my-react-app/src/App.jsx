@@ -2,6 +2,8 @@ import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { IoMdClose } from "react-icons/io";
+
 import NavBar from "./navBar";
 const App = () => {
   const defaultPath = `M 80 100 Q 700 100 1400 100`;
@@ -17,7 +19,7 @@ const App = () => {
 
     //  Box animation
     gsap.to(boxRef.current, {
-      x: 1400,
+      x: 1200,
       duration: 2,
       rotate: 360,
       backgroundColor: "#22c55e",
@@ -146,6 +148,16 @@ const App = () => {
     <>
 <NavBar/>
 <div className="fast">
+  <div className="nav  min-h-2/2 w-[30%] text-black font-bold text-3xl items-center py-40 px-20">
+<h4>home</h4>
+<h4>about</h4>
+<h4>contact</h4>
+<h4>menu</h4>
+<IoMdClose 
+      className="absolute top-5 right-5 text-brown-500 cursor-pointer" 
+      size={30} 
+    />
+  </div>
 
 </div>
     <div>

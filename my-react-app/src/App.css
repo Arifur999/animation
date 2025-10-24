@@ -12,3 +12,17 @@
   background-repeat: no-repeat;
   height: 100vh;
 }
+.nav{
+    background-color: rgba(127, 132, 132, 0.262);
+    position: absolute;
+    top: 0;
+    right: 0;
+    backdrop-filter: blur(10px);
+
+}
+.nav i{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    color: brown;
+}
