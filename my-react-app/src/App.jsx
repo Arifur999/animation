@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import NavBar from "./navBar";
 const App = () => {
   const defaultPath = `M 80 100 Q 700 100 1400 100`;
 
@@ -143,6 +143,11 @@ const App = () => {
   }, []);
 
   return (
+    <>
+<NavBar/>
+<div className="fast">
+
+</div>
     <div>
       {/* First Section */}
       <div className="min-h-screen bg-amber-600 flex items-center">
@@ -186,17 +191,15 @@ const App = () => {
         ></div>
         <h1 className="text-8xl text-center text-white z-10">Mouse hover </h1>
       </div>
-      <div
+      <div 
         
-        className="min-h-screen bg-sky-500 flex justify-center items-center relative overflow-hidden"
+        className="animate min-h-screen "
       >
-        <div
-          
-          className="absolute w-6 h-6 bg-white/20 rounded-full opacity-0 scale-0"
-        ></div>
+        
         <h1 className="text-8xl text-center text-white z-10">coming soon......</h1>
       </div>
     </div>
+    </>
   );
 };
 

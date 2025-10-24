@@ -1,0 +1,14 @@
+.animate {
+  background-image: url('../public/space-travel-collage-design.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.fast {
+  background-image: url('../public/cartoon-man-wearing-vr-glasses.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
