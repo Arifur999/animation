@@ -2,6 +2,6 @@
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
+  background: rgba(249, 249, 249, 0.396);
+  backdrop-filter: blur(5px);
 }

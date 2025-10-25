@@ -72,7 +72,7 @@ const NavBar = () => {
       {/* Drawer Menu */}
       <div
         ref={navRef}
-        className="fixed top-0 right-0 h-full w-[30%] bg-black text-white font-bold text-3xl flex flex-col justify-center items-start px-16 translate-x-full z-[50]"
+        className="fixed top-0 right-0 h-full w-[30%] bg-[#ffffff53] text-black font-bold text-3xl flex flex-col justify-center items-start px-16 translate-x-full z-[50]"
       >
         <h4 className="mb-4 cursor-pointer hover:text-amber-400">Home</h4>
         <h4 className="mb-4 cursor-pointer hover:text-amber-400">About</h4>
