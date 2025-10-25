@@ -1,28 +1,7 @@
-.animate {
-  background-image: url('../public/space-travel-collage-design.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-}
-.fast {
-  background-image: url('../public/cartoon-man-wearing-vr-glasses.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-}
-.nav{
-    background-color: rgba(127, 132, 132, 0.262);
-    position: absolute;
-    top: 0;
-    right: 0;
-    backdrop-filter: blur(10px);
-
-}
-.nav i{
-    position: absolute;
-    top: 5%;
-    right: 10%;
-    color: brown;
+.nav::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
 }
