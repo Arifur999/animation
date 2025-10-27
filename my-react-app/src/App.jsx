@@ -6,6 +6,7 @@ import SvgSection from "./SvgSection";
 import HoverSection from "./HoverSection";
 import HeroSection from "./heroSection";
 import ImageSection from "./imageSection";
+import Marquee from "./Marquee";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
       <HoverSection />
 
       <ImageSection></ImageSection>
+      <Marquee></Marquee>
    
     </>
   );
