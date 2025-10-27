@@ -6,35 +6,57 @@ const ImageSection = () => {
 
   useEffect(() => {
     const textElement = textRef.current;
-    const words = textElement.textContent.split("");
-    textElement.innerHTML = words
-      .map((word) => `<span class="word inline-block opacity-0">${word}</span>`)
+    const chars = textElement.textContent.split("");
+    textElement.innerHTML = chars
+      .map((ch) => `<span class="char inline-block opacity-0">${ch}</span>`)
       .join("");
 
-    const wordSpans = textElement.querySelectorAll(".word");
+    const charSpans = textElement.querySelectorAll(".char");
 
-    // Timeline for "word rising up" animation (loop)
+    const total = charSpans.length;
+    const half = Math.floor(total / 2);
+
+    const leftSide = Array.from(charSpans).slice(0, half);
+    const rightSide = Array.from(charSpans).slice(half).reverse();
+
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
 
-    // Each word rises up from bottom
     tl.fromTo(
-      wordSpans,
-      { yPercent: 100, opacity: 0 },
+      leftSide,
+      { y: 80, opacity: 0 },
       {
-        yPercent: 0,
+        y: 0,
         opacity: 1,
-        duration: 0.6,
-        ease: "back.out(1.7)",
-        stagger: 0.15,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.1,
       }
-    ).to(
-      wordSpans,
+    );
+
+    tl.fromTo(
+      rightSide,
+      { y: 80, opacity: 0 },
       {
-        yPercent: -100,
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.1,
+      },
+      "<" 
+    );
+
+    tl.to(
+      charSpans,
+      {
+        y: -80,
         opacity: 0,
-        duration: 0.6,
-        ease: "back.in(1.7)",
-        stagger: 0.15,
+        duration: 1.2,
+        ease: "power3.in",
+        stagger: {
+          each: 0.05,
+          from: "center", 
+        },
       },
       "+=1"
     );
