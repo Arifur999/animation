@@ -19,11 +19,11 @@ const App = () => {
       <ScrollSection />
 
       <SvgSection />
-
+ <Marquee></Marquee>
       <HoverSection />
 
       <ImageSection></ImageSection>
-      <Marquee></Marquee>
+     
    
     </>
   );
