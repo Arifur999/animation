@@ -7,6 +7,7 @@ import HoverSection from "./HoverSection";
 import HeroSection from "./heroSection";
 import ImageSection from "./imageSection";
 import Marquee from "./Marquee";
+import Card from "./card";
 
 
 const App = () => {
@@ -23,7 +24,7 @@ const App = () => {
       <HoverSection />
 
       <ImageSection></ImageSection>
-     
+     <Card></Card>
    
     </>
   );
