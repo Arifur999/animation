@@ -8,6 +8,7 @@ import HeroSection from "./heroSection";
 import ImageSection from "./imageSection";
 import Marquee from "./Marquee";
 import Card from "./card";
+import Gallary from "./Gallary";
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
 
       <ImageSection></ImageSection>
      <Card></Card>
+     <Gallary></Gallary>
    
     </>
   );
