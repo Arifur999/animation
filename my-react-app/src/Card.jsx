@@ -32,6 +32,9 @@ const Card = () => {
             </svg>
           </button>
         </div>
+
+
+        
         <img
           src="https://source.unsplash.com/301x301/?random"
           alt=""
