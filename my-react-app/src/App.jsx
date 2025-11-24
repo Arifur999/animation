@@ -11,6 +11,9 @@ import Card from "./card";
 import Gallary from "./Gallary";
 
 
+
+
+
 const App = () => {
   return (
     <>
